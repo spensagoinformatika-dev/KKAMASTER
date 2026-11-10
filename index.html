@@ -1,0 +1,817 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduPlay Arcade - Kumpulan Game KKA (Koding & Kecerdasan Artifisial)</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Inter & Fredoka for Educational & Tech Vibe -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Fredoka', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            blue: '#3B82F6',
+                            purple: '#8B5CF6',
+                            pink: '#EC4899',
+                            yellow: '#F59E0B',
+                            green: '#10B981',
+                            teal: '#14B8A6'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .font-heading { fontFamily: 'Fredoka', cursive, sans-serif; }
+        /* Custom modal backdrop animation */
+        .modal-active {
+            opacity: 1 !important;
+            pointer-events: auto !important;
+        }
+        .modal-active .modal-content {
+            transform: scale(1) !important;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 flex flex-col min-h-screen font-sans antialiased selection:bg-amber-300 selection:text-slate-900">
+
+    <!-- HEADER & NAVIGASI -->
+    <header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            
+            <!-- Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-brand-blue via-brand-purple to-brand-pink flex items-center justify-center text-white text-2xl shadow-lg shadow-indigo-200 group-hover:scale-105 transition-transform duration-300">
+                    <i class="fa-solid fa-laptop-code"></i>
+                </div>
+                <div>
+                    <span class="font-heading text-2xl font-bold bg-gradient-to-r from-brand-blue to-brand-purple bg-clip-text text-transparent">EduPlay</span>
+                    <span class="font-heading text-2xl font-bold text-amber-500">Arcade</span>
+                    <span class="block text-xs font-semibold tracking-wider text-slate-400 uppercase">Kumpulan Game KKA</span>
+                </div>
+            </a>
+
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:flex items-center gap-8 font-semibold text-slate-600">
+                <a href="#home" class="hover:text-brand-blue transition-colors duration-200">Home</a>
+                <a href="#games" class="hover:text-brand-blue transition-colors duration-200">Koleksi Game</a>
+                <a href="#about" class="hover:text-brand-blue transition-colors duration-200">Tentang KKA</a>
+                <a href="#games" class="px-5 py-2.5 rounded-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-slate-900 font-bold shadow-md shadow-amber-200 hover:shadow-lg transition-all duration-200 hover:-translate-y-0.5">
+                    Main Sekarang <i class="fa-solid fa-play ml-1 text-sm"></i>
+                </a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden p-2 rounded-xl text-slate-600 hover:bg-slate-100 focus:outline-none" aria-label="Toggle Menu">
+                <i class="fa-solid fa-bars text-2xl" id="menu-icon"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Container -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-100 px-4 pt-2 pb-6 space-y-3 font-semibold text-slate-600 shadow-xl">
+            <a href="#home" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-slate-50 hover:text-brand-blue">Home</a>
+            <a href="#games" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-slate-50 hover:text-brand-blue">Koleksi Game</a>
+            <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-lg hover:bg-slate-50 hover:text-brand-blue">Tentang KKA</a>
+            <a href="#games" class="mobile-nav-link block w-full text-center py-3 rounded-xl bg-amber-400 text-slate-900 font-bold shadow-md">
+                Main Sekarang <i class="fa-solid fa-play ml-1 text-sm"></i>
+            </a>
+        </div>
+    </header>
+
+    <main class="flex-grow">
+        <!-- HERO SECTION -->
+        <section id="home" class="relative overflow-hidden bg-gradient-to-b from-indigo-50/70 via-sky-50/50 to-slate-50 py-16 lg:py-24">
+            <!-- Background Decorative Blobs -->
+            <div class="absolute top-10 left-10 w-72 h-72 bg-purple-200 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse"></div>
+            <div class="absolute bottom-10 right-10 w-80 h-80 bg-amber-200 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-pulse" style="animation-delay: 1s;"></div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-12 gap-12 items-center">
+                    
+                    <!-- Left Hero Content -->
+                    <div class="lg:col-span-7 text-center lg:text-left space-y-6">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-100 text-brand-purple font-semibold text-sm">
+                            <span class="w-2.5 h-2.5 rounded-full bg-brand-purple animate-ping"></span>
+                            🤖 Portal Kumpulan Game KKA (Koding & Kecerdasan Artifisial) SMPN 1 Tlogomulyo
+                        </div>
+                        
+                        <h1 class="font-heading text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight">
+                            Belajar Koding & AI, <br class="hidden sm:inline">
+                            <span class="bg-gradient-to-r from-brand-blue via-brand-purple to-brand-pink bg-clip-text text-transparent">Jadi Lebih Seru & Interaktif!</span>
+                        </h1>
+                        
+                        <p class="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                            Jelajahi game edukatif KKA (Koding & Kecerdasan Artifial) SMPN 1 Tlogomulyo untuk mengasah pengetahuan dan kemampuanmu setingkat SMP langsung di perambanmu!
+                        </p>
+                        
+                        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
+                            <a href="#games" class="px-8 py-4 rounded-2xl bg-brand-blue hover:bg-blue-600 text-white font-bold text-lg shadow-lg shadow-blue-200 hover:shadow-xl hover:-translate-y-0.5 transition-all duration-200 text-center">
+                                <i class="fa-solid fa-gamepad mr-2"></i> Jelajahi 30 Game KKA
+                            </a>
+                            <a href="#about" class="px-8 py-4 rounded-2xl bg-white hover:bg-slate-100 text-slate-700 border border-slate-200 font-bold text-lg shadow-sm hover:shadow transition-all duration-200 text-center">
+                                Tentang KKA
+                            </a>
+                        </div>
+
+                        <!-- Mini Stats -->
+                        <div class="pt-8 grid grid-cols-3 gap-4 border-t border-slate-200/80 max-w-md mx-auto lg:mx-0">
+                            <div>
+                                <p class="font-heading text-2xl font-bold text-brand-blue">30 Game</p>
+                                <p class="text-xs text-slate-500 font-medium">Koleksi KKA Lengkap</p>
+                            </div>
+                            <div>
+                                <p class="font-heading text-2xl font-bold text-brand-purple">4 Kategori</p>
+                                <p class="text-xs text-slate-500 font-medium">Koding, AI, Logika, Sintaks</p>
+                            </div>
+                            <div>
+                                <p class="font-heading text-2xl font-bold text-brand-green">100% Free</p>
+                                <p class="text-xs text-slate-500 font-medium">Tanpa Install</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right Hero Visual -->
+                    <div class="lg:col-span-5 relative flex justify-center">
+                        <div class="relative w-full max-w-md">
+                            <div class="absolute inset-0 bg-gradient-to-tr from-brand-blue to-brand-pink rounded-3xl rotate-3 scale-105 opacity-20 filter blur-xl"></div>
+                            
+                            <!-- Hero Card Graphic -->
+                            <div class="relative bg-white p-6 rounded-3xl shadow-2xl border border-slate-100 space-y-4">
+                                <div class="relative h-60 rounded-2xl overflow-hidden bg-slate-900 group">
+                                    <img src="https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80" alt="Kumpulan Game KKA" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-transparent flex items-end p-4">
+                                        <span class="px-3 py-1 rounded-lg bg-amber-400 text-slate-900 font-bold text-xs uppercase tracking-wider">
+                                            Game KKA Unggulan
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <h3 class="font-heading font-bold text-xl text-slate-800">Neural Network & Koding</h3>
+                                        <p class="text-xs text-slate-500">Pemrograman & AI Interaktif</p>
+                                    </div>
+                                    <span class="w-10 h-10 rounded-xl bg-purple-100 text-purple-600 flex items-center justify-center font-bold text-lg">
+                                        <i class="fa-solid fa-brain"></i>
+                                    </span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
+        <!-- GAMES COLLECTION SECTION -->
+        <section id="games" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Section Header -->
+            <div class="text-center space-y-4 mb-10">
+                <h2 class="font-heading text-3xl sm:text-4xl font-bold text-slate-900">Kumpulan Game KKA</h2>
+                <p class="text-slate-600 max-w-xl mx-auto text-sm sm:text-base">
+                    Pilih kategori game Koding & Kecerdasan Artifisial favoritmu dan mulailah mengasah kecerdasan digitalmu!
+                </p>
+            </div>
+
+            <!-- Category Filter Buttons -->
+            <div class="flex flex-wrap justify-center gap-2 sm:gap-3 mb-12">
+                <button class="filter-btn active px-5 py-2.5 rounded-2xl font-bold text-sm transition-all duration-200 bg-brand-blue text-white shadow-md shadow-blue-200" data-filter="all">
+                    <i class="fa-solid fa-border-all mr-1.5"></i> Semua Game (30)
+                </button>
+                <button class="filter-btn px-5 py-2.5 rounded-2xl font-bold text-sm transition-all duration-200 bg-white text-slate-600 hover:bg-slate-100 border border-slate-200" data-filter="coding">
+                    <i class="fa-solid fa-code mr-1.5 text-amber-500"></i> Koding & Algoritma
+                </button>
+                <button class="filter-btn px-5 py-2.5 rounded-2xl font-bold text-sm transition-all duration-200 bg-white text-slate-600 hover:bg-slate-100 border border-slate-200" data-filter="ai">
+                    <i class="fa-solid fa-robot mr-1.5 text-purple-500"></i> Kecerdasan Artifisial (AI)
+                </button>
+                <button class="filter-btn px-5 py-2.5 rounded-2xl font-bold text-sm transition-all duration-200 bg-white text-slate-600 hover:bg-slate-100 border border-slate-200" data-filter="logika">
+                    <i class="fa-solid fa-brain mr-1.5 text-blue-500"></i> Logika & Spasial
+                </button>
+                <button class="filter-btn px-5 py-2.5 rounded-2xl font-bold text-sm transition-all duration-200 bg-white text-slate-600 hover:bg-slate-100 border border-slate-200" data-filter="sintaks">
+                    <i class="fa-solid fa-keyboard mr-1.5 text-emerald-500"></i> Sintaks & Bahasa
+                </button>
+            </div>
+
+            <!-- Game Cards Grid -->
+            <div id="game-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 sm:gap-8">
+                <!-- Dynamic cards populated via JavaScript -->
+            </div>
+
+            <!-- Empty State (Shown when no filter matches) -->
+            <div id="empty-state" class="hidden text-center py-16 space-y-4">
+                <div class="w-20 h-20 mx-auto rounded-full bg-slate-100 flex items-center justify-center text-slate-400 text-3xl">
+                    <i class="fa-solid fa-laptop-code"></i>
+                </div>
+                <h3 class="font-heading font-bold text-xl text-slate-700">Game Tidak Ditemukan</h3>
+                <p class="text-slate-500 text-sm">Belum ada game pada kategori KKA ini. Coba pilih kategori lainnya!</p>
+            </div>
+        </section>
+
+        <!-- ABOUT US SECTION -->
+        <section id="about" class="py-16 bg-white border-t border-slate-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="bg-gradient-to-r from-brand-blue/10 via-brand-purple/10 to-brand-pink/10 rounded-3xl p-8 sm:p-12 border border-indigo-100/50">
+                    <div class="grid md:grid-cols-12 gap-8 items-center">
+                        <div class="md:col-span-8 space-y-4">
+                            <span class="px-3.5 py-1.5 rounded-full bg-white text-brand-blue font-bold text-xs uppercase tracking-wider shadow-sm">
+                                Tentang EduPlay Arcade - KKA
+                            </span>
+                            <h2 class="font-heading text-3xl font-bold text-slate-900">Mewujudkan Pembelajaran Koding & AI yang Menyenangkan</h2>
+                            <p class="text-slate-600 leading-relaxed text-sm sm:text-base">
+                                <strong>Ekstrakurikuler KKA (Koding & Kecerdasan Artifisial) SMPN 1 Tlogomulyo</strong> Di era digital yang berkembang pesat, teknologi bukan lagi sekadar alat, melainkan masa depan. Ekstrakurikuler Koding & Kecerdasan Artifisial (KKA) hadir sebagai wadah inovatif bagi siswa-siswi SMP untuk melangkah lebih jauh dari sekadar menjadi pengguna teknologi, melainkan menjadi pencipta (kreator) teknologi!.Melalui pendekatan yang seru, interaktif, dan berbasis proyek (project-based learning), program KKA dirancang khusus untuk membumikan konsep teknologi tingkat tinggi menjadi materi yang mudah dipahami, menyenangkan, dan aplikatif bagi anak usia remaja.
+                            </p>
+                            <div class="flex flex-wrap gap-6 pt-2">
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold">
+                                        <i class="fa-solid fa-code"></i>
+                                    </div>
+                                    <span class="text-sm font-semibold text-slate-700">Koding Sekuensial & CSS</span>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <div class="w-10 h-10 rounded-full bg-purple-100 text-purple-600 flex items-center justify-center font-bold">
+                                        <i class="fa-solid fa-robot"></i>
+                                    </div>
+                                    <span class="text-sm font-semibold text-slate-700">Visual & Generative AI</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="md:col-span-4 text-center">
+                            <div class="inline-block p-6 bg-white rounded-2xl shadow-xl border border-slate-100 text-center space-y-3">
+                                <div class="w-16 h-16 mx-auto rounded-2xl bg-amber-100 text-amber-500 flex items-center justify-center text-3xl">
+                                    <i class="fa-solid fa-lightbulb"></i>
+                                </div>
+                                <h4 class="font-heading font-bold text-lg text-slate-800">Punya Game KKA?</h4>
+                                <p class="text-xs text-slate-500">Ingin membagikan game koding atau AI milikmu di sini?</p>
+                                <button onclick="alert('Terima kasih atas minat Anda! Kirimkan karya game KKA Anda ke email: submit@eduplayarcade.com')" class="w-full py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs transition-colors">
+                                    Hubungi Tim KKA
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <!-- Brand -->
+                <div class="flex items-center gap-3">
+                    <div class="w-10 h-10 rounded-xl bg-brand-blue flex items-center justify-center text-white text-xl">
+                        <i class="fa-solid fa-laptop-code"></i>
+                    </div>
+                    <div>
+                        <span class="font-heading text-xl font-bold text-white block">EduPlay Arcade</span>
+                        <span class="text-xs text-amber-400 font-medium block">Kumpulan Game KKA (20 Game)</span>
+                    </div>
+                </div>
+
+                <!-- Nav & Social Links -->
+                <div class="flex flex-wrap justify-center gap-6 text-sm">
+                    <a href="#home" class="hover:text-white transition-colors">Home</a>
+                    <a href="#games" class="hover:text-white transition-colors">Game KKA</a>
+                    <a href="#about" class="hover:text-white transition-colors">Tentang KKA</a>
+                </div>
+
+                <!-- Social Icons -->
+                <div class="flex items-center gap-4 text-lg">
+                    <a href="#" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-brand-blue hover:text-white flex items-center justify-center transition-all duration-200" aria-label="Github"><i class="fa-brands fa-github"></i></a>
+                    <a href="#" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-brand-pink hover:text-white flex items-center justify-center transition-all duration-200" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="w-9 h-9 rounded-full bg-slate-800 hover:bg-brand-purple hover:text-white flex items-center justify-center transition-all duration-200" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+                </div>
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-slate-800 text-center text-xs text-slate-500">
+                &copy; 2026 EduPlay Arcade - Kumpulan Game KKA (Koding & Kecerdasan Artifisial). Hak Cipta Dilindungi.
+            </div>
+        </div>
+    </footer>
+
+    <!-- MODAL GAME PLAYER IFRAME -->
+    <div id="game-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 opacity-0 pointer-events-none transition-opacity duration-300 ease-out">
+        <!-- Backdrop Blur Overlay -->
+        <div id="modal-backdrop" class="fixed inset-0 bg-slate-950/80 backdrop-blur-md transition-opacity"></div>
+
+        <!-- Modal Card Container -->
+        <div class="modal-content relative w-full max-w-5xl bg-slate-900 rounded-3xl shadow-2xl overflow-hidden border border-slate-800 z-10 transform scale-95 transition-transform duration-300 ease-out flex flex-col max-h-[92vh]">
+            
+            <!-- Modal Header Bar -->
+            <div class="flex items-center justify-between px-6 py-4 bg-slate-900 border-b border-slate-800 text-white">
+                <div class="flex items-center gap-3">
+                    <span id="modal-game-badge" class="px-2.5 py-1 rounded-md bg-brand-blue text-xs font-bold uppercase tracking-wider">
+                        Kategori
+                    </span>
+                    <h3 id="modal-game-title" class="font-heading text-lg sm:text-xl font-bold truncate">
+                        Judul Game KKA
+                    </h3>
+                </div>
+
+                <!-- Close Button (X) -->
+                <button id="close-modal-btn" class="w-10 h-10 rounded-full bg-slate-800 hover:bg-red-500 hover:text-white text-slate-300 flex items-center justify-center font-bold text-xl transition-all duration-200 focus:outline-none" title="Tutup Game">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Modal Body (Responsive 16:9 Iframe Wrapper) -->
+            <div class="relative w-full bg-black flex-grow min-h-[320px] sm:min-h-[480px]">
+                <!-- Loading Spinner Placeholder -->
+                <div id="iframe-loader" class="absolute inset-0 flex flex-col items-center justify-center text-white bg-slate-900 z-0">
+                    <i class="fa-solid fa-circle-notch fa-spin text-4xl text-brand-blue mb-3"></i>
+                    <p class="text-sm font-medium text-slate-400">Memuat Game KKA...</p>
+                </div>
+                
+                <!-- Game HTML5 Iframe -->
+                <iframe 
+                    id="game-iframe" 
+                    class="relative z-10 w-full h-full min-h-[320px] sm:min-h-[480px] border-0" 
+                    src="" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; gamepad" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <!-- Modal Footer Info -->
+            <div class="px-6 py-3 bg-slate-950 text-slate-400 text-xs flex flex-wrap justify-between items-center gap-2">
+                <span><i class="fa-solid fa-circle-info mr-1 text-amber-400"></i> Tekan <kbd class="px-1.5 py-0.5 bg-slate-800 rounded text-slate-200">ESC</kbd> atau tombol silang di kanan atas untuk menutup.</span>
+                <button id="fullscreen-btn" class="hover:text-white font-medium flex items-center gap-1 transition-colors">
+                    <i class="fa-solid fa-expand"></i> Layar Penuh
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        // DATA GAMES KOLEKSI KKA (30 GAME TOTAL)
+        const gamesData = [
+            {
+                id: 1,
+                title: "ADAM - English Puzzle Adventure",
+                category: "Sintaks",
+                categoryLabel: "Sintaks & Bahasa",
+                badgeColor: "bg-blue-500 text-white",
+                description: "Jelajahi lima dunia puzzle, pecahkan tantangan grammar, kumpulkan kunci pengetahuan, dan jadilah Past Tense Master!.",
+                thumbnail: "https://images.unsplash.com/photo-1611996575749-79a3a250f948?auto=format&fit=crop&w=500&q=80",
+                iframeUrl: "https://spensagoinformatika-dev.github.io/KKA1/"
+            },
+            {
+                id: 2,
+                title: "ABELA - Petualangan Pintar",
+                category: "Sintaks",
+                categoryLabel: "Sintaks & Bahasa",
+                badgeColor: "bg-purple-500 text-white",
+                description: "Jelajahi misteri Proklamasi dan taklukkan tantangan Dunia Norma. Kumpulkan poin, pecahkan puzzle, dan raih gelar Pahlawan Pancasila!.",
+                thumbnail: "https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?auto=format&fit=crop&w=500&q=80",
+                iframeUrl: "https://spensagoinformatika-dev.github.io/KKA2/"
+            },
+            {
+                id: 3,
+                title: "ALIN - Petualangan Ular Tangga",
+                category: "sintaks",
+                categoryLabel: "Sintaks & Bahasa",
+                badgeColor: "bg-emerald-500 text-white",
+                description: "Jelajahi 100 kotak, jawab tantangan PAI, kumpulkan poin, dan jadilah pemenang. Semangat belajar dan bermain dengan sportif!.",
+                thumbnail: "https://images.unsplash.com/photo-1632501641765-e568d28b0015?auto=format&fit=crop&w=500&q=80",
+                iframeUrl: "https://spensagoinformatika-dev.github.io/KKA3/"
+            },
+            {
+                id: 4,
+                title: "Pac-Man Maze Logic",
+                category: "coding",
+                categoryLabel: "Koding & Algoritma",
+                badgeColor: "bg-amber-500 text-white",
+                description: "Pahami pemetaan labirin dan jalur tercepat (algoritma pathfinding dasar) untuk mengumpulkan poin dan menghindari musuh.",
+                thumbnail: "https://images.unsplash.com/photo-1534423861386-85a16f5d13fd?auto=format&fit=crop&w=500&q=80",
+                iframeUrl: "https://freepacman.org/"
+            },
+            {
+                id: 5,
+                title: "Tetris Spatial Logic",
+                category: "logika",
+                categoryLabel: "Logika & Spasial",
+                badgeColor: "bg-blue-500 text-white",
+                description: "Latih kesadaran spasial dan geometri dasar KKA dengan menyusun matriks balok-balok warna agar terisi sempurna.",
+                thumbnail: "https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=500&q=80",
+                iframeUrl: "https://tetris.com/play-tetris"
+            },
+            {
+                id: 6,
+                title: "Memory Card Match",
+                category: "logika",
+                categoryLabel: "Logika & Spasial",
+                badgeColor: "bg-blue-500 text-white",
+                description: "Uji dan latih daya ingat visual serta pengenalan matriks data pasangan kartu gambar secara efisien.",
+                thumbnail: "https://images.unsplash.com/photo-1606167668584-78701c57f13d?auto=format&fit=crop&w=500&q=80",
+                iframeUrl: "https://html5games.com/"
+            },
+            {
+                id: 7,
+                title: "Typing Speed Racer",
+                category: "sintaks",
+                categoryLabel: "Sintaks & Bahasa",
+                badgeColor: "bg-emerald-500 text-white",
+                description: "Tingkatkan kecepatan dan akurasi mengetik kode keyboard komputer dengan simulasi balapan mengetik sintaks interaktif.",
+                thumbnail: "https://images.unsplash.com/photo-1587829741301-dc798b83add3?auto=format&fit=crop&w=500&q=80",
+                iframeUrl: "https://keybr.com/"
+            },
+            {
+                id: 8,
+                title: "Code Maze Runner",
+                category: "coding",
+                categoryLabel: "Koding & Algoritma",
+                badgeColor: "bg-amber-500 text-white",
+                description: "Rancang urutan instruksi (sekuensial logic) dan percabangan perintah untuk membimbing karakter melewati labirin.",
+                thumbnail: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=500&q=80",
+                iframeUrl: "https://blockly.games/maze"
+            },
+            {
+                id: 9,
+                title: "Scratch Coding Studio",
+                category: "coding",
+                categoryLabel: "Koding & Algoritma",
+                badgeColor: "bg-amber-500 text-white",
+                description: "Pemrograman berbasis blok visual buatan MIT. Buat animasi interaktif dan logika program sederhana tanpa sintaks rumit.",
+                thumbnail: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=500&q=80",
+                iframeUrl: "https://scratch.mit.edu/projects/embed/10128407/"
+            },
+            {
+                id: 10,
+                title: "Quick, Draw! AI Recognition",
+                category: "ai",
+                categoryLabel: "Kecerdasan Artifisial (AI)",
+                badgeColor: "bg-purple-500 text-white",
+                description: "Game tebak gambar oleh Google! AI menggunakan Jaringan Saraf Tiruan (Neural Network) untuk menebak coretanmu.",
+                thumbnail: "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=500&q=80",
+                iframeUrl: "https://quickdraw.withgoogle.com/"
+            },
+            {
+                id: 11,
+                title: "AutoDraw AI Illustrator",
+                category: "ai",
+                categoryLabel: "Kecerdasan Artifisial (AI)",
+                badgeColor: "bg-purple-500 text-white",
+                description: "Eksplorasi AI Generatif gambar yang mengubah sketsa tangan acak menjadi grafis vektor rapi secara cerdas.",
+                thumbnail: "https://images.unsplash.com/photo-1561070791-2526d30994b5?auto=format&fit=crop&w=500&q=80",
+                iframeUrl: "https://www.autodraw.com/"
+            },
+            {
+                id: 12,
+                title: "Code.org Flappy Code",
+                category: "coding",
+                categoryLabel: "Koding & Algoritma",
+                badgeColor: "bg-amber-500 text-white",
+                description: "Pelajari logika pemrograman Event-Driven (kejadian tombol saat diklik/disentuh) dengan membangun game Flappy-mu sendiri.",
+                thumbnail: "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&w=500&q=80",
+                iframeUrl: "https://studio.code.org/flappy/1"
+            },
+            {
+                id: 13,
+                title: "Cargo Bot Automation",
+                category: "coding",
+                categoryLabel: "Koding & Algoritma",
+                badgeColor: "bg-amber-500 text-white",
+                description: "Instruksikan lengan robot menggunakan urutan perintah koding untuk menata peti kontainer secara efisien.",
+                thumbnail: "https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=500&q=80",
+                iframeUrl: "https://html5games.com/"
+            },
+            {
+                id: 14,
+                title: "Lightbot Code Logic",
+                category: "coding",
+                categoryLabel: "Koding & Algoritma",
+                badgeColor: "bg-amber-500 text-white",
+                description: "Tuntun robot menerangi ubin dengan menyusun konsep koding mendasar seperti Function, Procedure, dan Loop.",
+                thumbnail: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=500&q=80",
+                iframeUrl: "https://lightbot.com/"
+            },
+            {
+                id: 15,
+                title: "Chess AI Bot",
+                category: "ai",
+                categoryLabel: "Kecerdasan Artifisial (AI)",
+                badgeColor: "bg-purple-500 text-white",
+                description: "Bermain catur melawan bot AI yang mengevaluasi jutaan kemungkinan langkah menggunakan algoritma Minimax.",
+                thumbnail: "https://images.unsplash.com/photo-1529699211952-734e80c4d42b?auto=format&fit=crop&w=500&q=80",
+                iframeUrl: "https://www.chess.com/play/computer"
+            },
+            {
+                id: 16,
+                title: "Sudoku Logic Solver",
+                category: "logika",
+                categoryLabel: "Logika & Spasial",
+                badgeColor: "bg-blue-500 text-white",
+                description: "Pecahkan teka-teki angka 9x9 menggunakan teknik eliminasi data dan algoritma logika pemecahan masalah.",
+                thumbnail: "https://images.unsplash.com/photo-1580541832626-2a7131ee809f?auto=format&fit=crop&w=500&q=80",
+                iframeUrl: "https://sudoku.com/"
+            },
+            {
+                id: 17,
+                title: "Hextris Polygon Puzzle",
+                category: "logika",
+                categoryLabel: "Logika & Spasial",
+                badgeColor: "bg-blue-500 text-white",
+                description: "Putar segi enam untuk mencocokkan warna baris balok secara cepat. Menguji analisis geometri spasial 360 derajat.",
+                thumbnail: "https://images.unsplash.com/photo-1509228468518-180dd4864904?auto=format&fit=crop&w=500&q=80",
+                iframeUrl: "https://hextris.io/"
+            },
+            {
+                id: 18,
+                title: "Tic-Tac-Toe AI Unbeatable",
+                category: "ai",
+                categoryLabel: "Kecerdasan Artifisial (AI)",
+                badgeColor: "bg-purple-500 text-white",
+                description: "Uji strategi melawan algoritma Decision Tree AI sempurna yang tidak pernah membuat kesalahan langkah.",
+                thumbnail: "https://images.unsplash.com/photo-1668554245700-789177695029?auto=format&fit=crop&w=500&q=80",
+                iframeUrl: "https://playtictactoe.org/"
+            },
+            {
+                id: 19,
+                title: "Flexbox Froggy",
+                category: "sintaks",
+                categoryLabel: "Sintaks & Bahasa",
+                badgeColor: "bg-emerald-500 text-white",
+                description: "Bantu katak melompat ke daun teratai dengan menulis kode CSS Flexbox (`justify-content`, `align-items`).",
+                thumbnail: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?auto=format&fit=crop&w=500&q=80",
+                iframeUrl: "https://flexboxfroggy.com/"
+            },
+            {
+                id: 20,
+                title: "Grid Garden",
+                category: "sintaks",
+                categoryLabel: "Sintaks & Bahasa",
+                badgeColor: "bg-emerald-500 text-white",
+                description: "Siram tanaman di kebun dengan menulis kode CSS Grid Layout untuk mengontrol baris dan kolom halaman web.",
+                thumbnail: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=500&q=80",
+                iframeUrl: "https://cssgridgarden.com/"
+            },
+            /* 10 GAME KKA BARU UNTUK TINGKAT SMP */
+            {
+                id: 21,
+                title: "Teachable Machine AI",
+                category: "ai",
+                categoryLabel: "Kecerdasan Artifisial (AI)",
+                badgeColor: "bg-purple-500 text-white",
+                description: "[SMP] Latih model Machine Learning buatanmu sendiri secara langsung untuk mengenali gambar, suara, atau gerakan tubuh.",
+                thumbnail: "https://images.unsplash.com/photo-1677442136019-21780efad99a?auto=format&fit=crop&w=500&q=80",
+                iframeUrl: "https://teachablemachine.withgoogle.com/"
+            },
+            {
+                id: 22,
+                title: "SQL Island Mystery",
+                category: "coding",
+                categoryLabel: "Koding & Algoritma",
+                badgeColor: "bg-amber-500 text-white",
+                description: "[SMP] Bertahan hidup di pulau terpencil dengan menulis kueri basis data SQL (SELECT, WHERE, JOIN) untuk memecahkan misteri.",
+                thumbnail: "https://images.unsplash.com/photo-1544383835-bda2bc66a55d?auto=format&fit=crop&w=500&q=80",
+                iframeUrl: "https://sql-island.informatik.uni-kl.de/"
+            },
+            {
+                id: 23,
+                title: "Cyber Security Challenge",
+                category: "coding",
+                categoryLabel: "Koding & Algoritma",
+                badgeColor: "bg-amber-500 text-white",
+                description: "[SMP] Pelajari dasar-dasar keamanan siber, enkripsi data KKA, serta pencegahan phishing dan hacking dalam lingkungan aman.",
+                thumbnail: "https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=500&q=80",
+                iframeUrl: "https://be-cyber-smart.com/"
+            },
+            {
+                id: 24,
+                title: "Sorting Algorithm Viz",
+                category: "logika",
+                categoryLabel: "Logika & Spasial",
+                badgeColor: "bg-blue-500 text-white",
+                description: "[SMP] Simulasi interaktif berbagai algoritma pengurutan data (Bubble Sort, Quick Sort, Merge Sort) dan kompleksitas Big-O.",
+                thumbnail: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=500&q=80",
+                iframeUrl: "https://visualgo.net/en/sorting"
+            },
+            {
+                id: 25,
+                title: "HTML Markup Builder",
+                category: "sintaks",
+                categoryLabel: "Sintaks & Bahasa",
+                badgeColor: "bg-emerald-500 text-white",
+                description: "[SMP] Pelajari struktur dasar pembuatan web modern dengan mempraktikkan elemen tag HTML5 (`<div>`, `<h1>`, `<a>`).",
+                thumbnail: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&w=500&q=80",
+                iframeUrl: "https://jsbin.com/"
+            },
+            {
+                id: 26,
+                title: "Python Turtle Graphics",
+                category: "coding",
+                categoryLabel: "Koding & Algoritma",
+                badgeColor: "bg-amber-500 text-white",
+                description: "[SMP] Gambar pola fraktal dan bentuk geometris abstrak dengan menulis skrip pemrograman bahasa Python murni.",
+                thumbnail: "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?auto=format&fit=crop&w=500&q=80",
+                iframeUrl: "https://trinket.io/embed/python/f1a070119e"
+            },
+            {
+                id: 27,
+                title: "Machine Learning Kids",
+                category: "ai",
+                categoryLabel: "Kecerdasan Artifisial (AI)",
+                badgeColor: "bg-purple-500 text-white",
+                description: "[SMP] Pelajari konsep Data Training, Supervised Learning, dan cara sistem AI mengambil keputusan otomatis.",
+                thumbnail: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=500&q=80",
+                iframeUrl: "https://machinelearningforkids.co.uk/"
+            },
+            {
+                id: 28,
+                title: "Binary Code Breaker",
+                category: "logika",
+                categoryLabel: "Logika & Spasial",
+                badgeColor: "bg-blue-500 text-white",
+                description: "[SMP] Konversi angka desimal ke biner (0 dan 1) dan pecahkan teka-teki enkripsi bit komputer secara cepat.",
+                thumbnail: "https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&w=500&q=80",
+                iframeUrl: "https://play2048.co/"
+            },
+            {
+                id: 29,
+                title: "Regex Word Parser",
+                category: "sintaks",
+                categoryLabel: "Sintaks & Bahasa",
+                badgeColor: "bg-emerald-500 text-white",
+                description: "[SMP] Pecahkan pola pencarian teks tingkat lanjut dengan sintaks Regular Expression (Regex) dasar untuk anak SMP.",
+                thumbnail: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?auto=format&fit=crop&w=500&q=80",
+                iframeUrl: "https://regexone.com/"
+            },
+            {
+                id: 30,
+                title: "Graph Shortest Path AI",
+                category: "ai",
+                categoryLabel: "Kecerdasan Artifisial (AI)",
+                badgeColor: "bg-purple-500 text-white",
+                description: "[SMP] Simulasi algoritma Dijkstra & A* Pathfinding yang digunakan GPS dan kecerdasan buatan mobil otonom.",
+                thumbnail: "https://images.unsplash.com/photo-1508873696983-2df515122519?auto=format&fit=crop&w=500&q=80",
+                iframeUrl: "https://qiao.github.io/PathFinding.js/visual/"
+            }
+        ];
+
+        // RENDER GAME CARDS
+        const gameGrid = document.getElementById('game-grid');
+        const emptyState = document.getElementById('empty-state');
+
+        function renderGames(filter = 'all') {
+            gameGrid.innerHTML = '';
+            
+            const filteredGames = filter === 'all' 
+                ? gamesData 
+                : gamesData.filter(game => game.category === filter);
+
+            if (filteredGames.length === 0) {
+                emptyState.classList.remove('hidden');
+                return;
+            } else {
+                emptyState.classList.add('hidden');
+            }
+
+            filteredGames.forEach(game => {
+                const card = document.createElement('div');
+                card.className = "game-card bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1.5 flex flex-col group";
+                
+                card.innerHTML = `
+                    <div class="relative h-48 overflow-hidden bg-slate-100">
+                        <img src="${game.thumbnail}" alt="${game.title}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                        <div class="absolute inset-0 bg-slate-900/20 group-hover:bg-slate-900/10 transition-colors"></div>
+                        <span class="absolute top-3 left-3 px-3 py-1 rounded-full text-xs font-bold shadow-md ${game.badgeColor}">
+                            ${game.categoryLabel}
+                        </span>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow justify-between space-y-4">
+                        <div>
+                            <h3 class="font-heading font-bold text-lg text-slate-800 group-hover:text-brand-blue transition-colors">
+                                ${game.title}
+                            </h3>
+                            <p class="text-xs text-slate-500 mt-2 line-clamp-3 leading-relaxed">
+                                ${game.description}
+                            </p>
+                        </div>
+                        <button onclick="openGameModal(${game.id})" class="w-full py-3 rounded-2xl bg-slate-100 hover:bg-brand-blue hover:text-white text-slate-700 font-bold text-sm transition-all duration-200 flex items-center justify-center gap-2 group-hover:bg-brand-blue group-hover:text-white shadow-sm">
+                            <i class="fa-solid fa-play text-xs"></i> Mainkan Game KKA
+                        </button>
+                    </div>
+                `;
+                gameGrid.appendChild(card);
+            });
+        }
+
+        // FILTER BUTTONS CLICK HANDLER
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('active', 'bg-brand-blue', 'text-white', 'shadow-md', 'shadow-blue-200');
+                    b.classList.add('bg-white', 'text-slate-600', 'hover:bg-slate-100', 'border', 'border-slate-200');
+                });
+                btn.classList.remove('bg-white', 'text-slate-600', 'hover:bg-slate-100', 'border', 'border-slate-200');
+                btn.classList.add('active', 'bg-brand-blue', 'text-white', 'shadow-md', 'shadow-blue-200');
+                
+                const filterValue = btn.getAttribute('data-filter');
+                renderGames(filterValue);
+            });
+        });
+
+        // MODAL SYSTEM LOGIC
+        const modal = document.getElementById('game-modal');
+        const modalTitle = document.getElementById('modal-game-title');
+        const modalBadge = document.getElementById('modal-game-badge');
+        const iframe = document.getElementById('game-iframe');
+        const iframeLoader = document.getElementById('iframe-loader');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        const backdrop = document.getElementById('modal-backdrop');
+        const fullscreenBtn = document.getElementById('fullscreen-btn');
+
+        function openGameModal(gameId) {
+            const game = gamesData.find(g => g.id === gameId);
+            if (!game) return;
+
+            // Set content
+            modalTitle.textContent = game.title;
+            modalBadge.textContent = game.categoryLabel;
+            
+            // Show Loader
+            iframeLoader.classList.remove('hidden');
+
+            // Set iframe URL
+            iframe.src = game.iframeUrl;
+
+            // Hide loader when iframe finishes loading
+            iframe.onload = () => {
+                iframeLoader.classList.add('hidden');
+            };
+
+            // Show Modal with Animation
+            modal.classList.add('modal-active');
+            document.body.style.overflow = 'hidden'; // Lock background scroll
+        }
+
+        function closeGameModal() {
+            modal.classList.remove('modal-active');
+            document.body.style.overflow = ''; // Restore background scroll
+            
+            // CRITICAL: Clear iframe src to stop game audio & execution
+            setTimeout(() => {
+                iframe.src = '';
+            }, 200);
+        }
+
+        // Modal Event Listeners
+        closeModalBtn.addEventListener('click', closeGameModal);
+        backdrop.addEventListener('click', closeGameModal);
+
+        // ESC Key to close modal
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal.classList.contains('modal-active')) {
+                closeGameModal();
+            }
+        });
+
+        // Fullscreen Toggle inside Iframe
+        fullscreenBtn.addEventListener('click', () => {
+            if (iframe.requestFullscreen) {
+                iframe.requestFullscreen();
+            } else if (iframe.webkitRequestFullscreen) { /* Safari */
+                iframe.webkitRequestFullscreen();
+            } else if (iframe.msRequestFullscreen) { /* IE11 */
+                iframe.msRequestFullscreen();
+            }
+        });
+
+        // MOBILE MENU TOGGLE
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // INITIAL RENDER ON LOAD
+        window.addEventListener('DOMContentLoaded', () => {
+            renderGames('all');
+        });
+    </script>
+</body>
+</html>
